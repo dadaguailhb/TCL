@@ -1,5 +1,4 @@
 # EnViT
-\![框架7](https://github.com/dadaguailhb/EnViT/assets/97597256/58b3f9ca-0b07-44ba-83c7-3d982aceb1df)
 
 ## train on JAAD
 
