@@ -20,7 +20,7 @@ OMP_NUM_THREADS=1 nohup python -m torch.distributed.launch --nproc_per_node=6 \
 
 ## train on PIE
 ```bash
-OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=1,2,3,4,5,6 nohup python -m torch.distributed.launch --nproc_per_node=6 \
+OMP_NUM_THREADS=1 nohup python -m torch.distributed.launch --nproc_per_node=6 \
        --nnodes=1 \
       --node_rank=0  \
       tools/train_ddp_videomae.py \
