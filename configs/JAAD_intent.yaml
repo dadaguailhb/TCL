@@ -1,0 +1,89 @@
+PROJECT: 'intent2021icra_intent_action_JAAD'
+USE_WANDB: False
+CKPT_DIR: 'checkpoints/JAAD'
+OUT_DIR: 'outputs/JAAD'
+VISUALIZE: False
+STYLE: 'SF-GRU' #'SF-GRU' # ues test batch size = 1 for PIE and 128 for SF-GRU
+MODEL:
+  TYPE: 'vit'
+  TASK: 'action_intent_single'
+  WITH_EGO: False
+  WITH_TRAFFIC: False
+  TRAFFIC_TYPES: ['x_ego', 'x_neighbor', 'x_crosswalk', 'x_light', 'x_sign']
+  TRAFFIC_ATTENTION: 'softmax' #softmax, sigmoid or none
+  SEG_LEN: 30
+  # INPUT_LEN: 15 # past 0.5 seconds
+  INPUT_LEN: 16
+  PRED_LEN: 5
+  ROI_SIZE: 7
+  POOLER_SCALES: (0.03125,)
+  POOLER_SAMPLING_RATIO: 0
+DATASET:
+  NAME: 'JAAD'
+  ROOT: '/home/lianghongbin/lianghongbin/intent_data/JAAD'
+  NUM_ACTION: 7
+  NUM_INTENT: 2
+  MIN_BBOX: [0, 0, 0, 0]
+  MAX_BBOX: [1920, 1080, 1920, 1080]
+  FPS: 30
+  OVERLAP: 0.6
+DATALOADER:
+  NUM_WORKERS: 16
+  WEIGHTED: 'intent'
+  ITERATION_BASED: True
+SOLVER:
+  MAX_EPOCH: 100
+  BATCH_SIZE: 2
+  LR: 0.00001      # 0.00001
+  L2_WEIGHT: 0.001  # 0.001
+TEST:
+  BATCH_SIZE: 1
+
+pretrain: False
+model_ckpt: 'ckpt/mar_duke_224_small_epoch213.ckpt'
+
+# finetune
+finetune_model: 'vit_base_patch16_224'
+finetune: 'ckpt/vit_base_checkpoint.pth'
+model_key: 'model|module'
+model_prefix: ''
+
+img_size: 224
+patch_size: 16
+clip_frames: 16
+tubelet_size: 2
+mask_strategy: "tube"
+temporal_sample_rate: 2
+mask_percentage_target: 0.9
+mlp_ratio: 4.0
+qkv_bias: true
+qk_scale: null
+drop_rate: 0.0
+attn_drop_rate: 0.0
+norm_layer: "LayerNorm"
+init_values: 0.0
+weight_decay: 0.05
+feature_dir: "Marlin_Features_Vit_Small"
+adv_loss: true
+adv_weight: 0.01
+gp_weight: 0.0
+d_steps: 1
+g_steps: 1
+
+learning_rate:
+  base: 1.5e-4
+  # base: 0.5e-4
+  warmup: 1.0e-6
+  min: 1.0e-5
+  warmup_epochs: 40
+
+optimizer:
+  type: "AdamW"
+  eps: 1.0e-8
+  betas: [0.9, 0.95]
+
+encoder:
+  embed_dim: 384
+  depth: 12
+  num_heads: 6
+
