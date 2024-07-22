@@ -1,6 +1,8 @@
 # Temporal-contextual Event Learning for Pedestrian Crossing Intent Prediction
-![image](https://github.com/dadaguailhb/TCL/blob/main/img/motivation1.png）
-![image](https://github.com/dadaguailhb/TCL/blob/main/img/%E6%A1%86%E6%9E%B6_%E5%89%AF%E6%9C%AC2.png）
+Temporal-contextual Event Learning (TCL) focuses on the critical events identification and adaptively critical features extraction across the events for pedestrian crossing intentio(PCI) prediction.
+![image](https://github.com/dadaguailhb/TCL/blob/main/img/motivation1.png)
+![image](https://github.com/dadaguailhb/TCL/blob/main/img/%E6%A1%86%E6%9E%B6_%E5%89%AF%E6%9C%AC2.png)
+
 
 ## Datasets
 [JAAD](https://data.nvision2.eecs.yorku.ca/JAAD_dataset/)
