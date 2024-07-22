@@ -5,6 +5,12 @@
 [JAAD](https://data.nvision2.eecs.yorku.ca/JAAD_dataset/)
 [PIE](https://data.nvision2.eecs.yorku.ca/PIE_dataset/)
 
+## Requirements
+Installing requirements:
+```bash
+pip install -r requirements.txt
+```
+
 ## Training
 Training on JAAD
 ```bash
