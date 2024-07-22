@@ -1,7 +1,11 @@
-# TCL
+# Temporal-contextual Event Learning for Pedestrian Crossing Intent Prediction
 
-## train on JAAD
+## Datasets
+[JAAD](https://data.nvision2.eecs.yorku.ca/JAAD_dataset/)
+[PIE](https://data.nvision2.eecs.yorku.ca/PIE_dataset/)
 
+## Training
+Training on JAAD
 ```bash
 OMP_NUM_THREADS=1 nohup python -m torch.distributed.launch --nproc_per_node=6 \
        --nnodes=1 \
@@ -18,7 +22,7 @@ OMP_NUM_THREADS=1 nohup python -m torch.distributed.launch --nproc_per_node=6 \
       MODEL.TASK intent_single
 ```
 
-## train on PIE
+Training on PIE
 ```bash
 OMP_NUM_THREADS=1 nohup python -m torch.distributed.launch --nproc_per_node=6 \
        --nnodes=1 \
